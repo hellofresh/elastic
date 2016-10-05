@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/smartystreets/go-aws-auth"
 	"log"
 	"math/rand"
 	"net/http"
@@ -790,7 +791,7 @@ func (c *Client) healthcheck(timeout time.Duration, force bool) {
 			if basicAuth {
 				req.SetBasicAuth(basicAuthUsername, basicAuthPassword)
 			}
-			res, err := c.c.Do((*http.Request)(req))
+			res, err := c.c.Do(awsauth.Sign4((*http.Request)(req)))
 			if err == nil {
 				if res.Body != nil {
 					defer res.Body.Close()
@@ -839,7 +840,7 @@ func (c *Client) startupHealthcheck(timeout time.Duration) error {
 			if basicAuth {
 				req.SetBasicAuth(basicAuthUsername, basicAuthPassword)
 			}
-			res, err := cl.Do(req)
+			res, err := cl.Do(awsauth.Sign4(req))
 			if err == nil && res != nil && res.StatusCode >= 200 && res.StatusCode < 300 {
 				return nil
 			}
@@ -981,6 +982,7 @@ func (c *Client) PerformRequest(method, path string, params url.Values, body int
 		c.dumpRequest((*http.Request)(req))
 
 		// Get response
+		awsauth.Sign4((*http.Request)(req))
 		res, err := c.c.Do((*http.Request)(req))
 		if err != nil {
 			retries -= 1
