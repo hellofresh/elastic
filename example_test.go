@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"time"
 
-	elastic "gopkg.in/olivere/elastic.v2"
+	elastic "github.com/hellofresh/elastic"
 )
 
 type Tweet struct {

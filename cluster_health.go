@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"strings"
 
-	"gopkg.in/olivere/elastic.v2/uritemplates"
+	"github.com/hellofresh/elastic/uritemplates"
 )
 
 // ClusterHealthService allows to get the status of the cluster.

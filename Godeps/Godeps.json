@@ -1,0 +1,11 @@
+{
+	"ImportPath": "github.com/hellofresh/elastic",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v74",
+	"Deps": [
+		{
+			"ImportPath": "github.com/smartystreets/go-aws-auth",
+			"Rev": "2043e6d0bb7e4c18464a7bba562acbe482e3cabd"
+		}
+	]
+}

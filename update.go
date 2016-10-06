@@ -11,7 +11,7 @@ import (
 	"net/url"
 	"strings"
 
-	"gopkg.in/olivere/elastic.v2/uritemplates"
+	"github.com/hellofresh/elastic/uritemplates"
 )
 
 // UpdateResult is the result of updating a document in Elasticsearch.

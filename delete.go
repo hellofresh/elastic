@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"gopkg.in/olivere/elastic.v2/uritemplates"
+	"github.com/hellofresh/elastic/uritemplates"
 )
 
 type DeleteService struct {
