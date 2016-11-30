@@ -10,7 +10,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	"gopkg.in/olivere/elastic.v3/uritemplates"
+	"github.com/hellofresh/elastic/uritemplates"
 )
 
 // DeleteService allows to delete a typed JSON document from a specified

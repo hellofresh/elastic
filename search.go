@@ -13,7 +13,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	"gopkg.in/olivere/elastic.v3/uritemplates"
+	"github.com/hellofresh/elastic/uritemplates"
 )
 
 // Search for documents in Elasticsearch.

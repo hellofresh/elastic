@@ -11,7 +11,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	"gopkg.in/olivere/elastic.v3/uritemplates"
+	"github.com/hellofresh/elastic/uritemplates"
 )
 
 // UpdateByQueryService is documented at https://www.elastic.co/guide/en/elasticsearch/plugins/master/plugins-reindex.html.
