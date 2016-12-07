@@ -11,7 +11,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	"gopkg.in/olivere/elastic.v3/uritemplates"
+	"github.com/hellofresh/elastic/uritemplates"
 )
 
 // TasksListService retrieves the list of currently executing tasks

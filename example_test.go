@@ -16,7 +16,7 @@ import (
 	"golang.org/x/net/context"
 	"golang.org/x/sync/errgroup"
 
-	elastic "gopkg.in/olivere/elastic.v3"
+	elastic "github.com/hellofresh/elastic"
 )
 
 type Tweet struct {

@@ -18,6 +18,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/smartystreets/go-aws-auth"
 	"golang.org/x/net/context"
 	"golang.org/x/net/context/ctxhttp"
 )
@@ -53,7 +54,7 @@ const (
 	DefaultHealthcheckInterval = 60 * time.Second
 
 	// DefaultSnifferEnabled specifies if the sniffer is enabled by default.
-	DefaultSnifferEnabled = true
+	DefaultSnifferEnabled = false
 
 	// DefaultSnifferInterval is the interval between two sniffing procedures,
 	// i.e. the lookup of all nodes in the cluster and their addition/removal
@@ -921,7 +922,7 @@ func (c *Client) healthcheck(timeout time.Duration, force bool) {
 			if basicAuth {
 				req.SetBasicAuth(basicAuthUsername, basicAuthPassword)
 			}
-			res, err := c.c.Do((*http.Request)(req))
+			res, err := c.c.Do(awsauth.Sign4((*http.Request)(req)))
 			if err == nil {
 				if res.Body != nil {
 					defer res.Body.Close()
@@ -1134,9 +1135,9 @@ func (c *Client) PerformRequestC(ctx context.Context, method, path string, param
 		// Get response
 		var res *http.Response
 		if ctx == nil {
-			res, err = c.c.Do((*http.Request)(req))
+			res, err = c.c.Do(awsauth.Sign4((*http.Request)(req)))
 		} else {
-			res, err = ctxhttp.Do(ctx, c.c, (*http.Request)(req))
+			res, err = ctxhttp.Do(ctx, c.c, awsauth.Sign4((*http.Request)(req)))
 		}
 		if err != nil {
 			retries--

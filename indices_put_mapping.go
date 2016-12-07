@@ -11,7 +11,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	"gopkg.in/olivere/elastic.v3/uritemplates"
+	"github.com/hellofresh/elastic/uritemplates"
 )
 
 // IndicesPutMappingService allows to register specific mapping definition
